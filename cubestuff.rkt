@@ -1,0 +1,184 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname cubestuff) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require 2htdp/image)
+(require 2htdp/universe)
+
+(define cubie
+  (rectangle 30 30 "solid" "black"))
+
+(define (makesticker clr)
+  (overlay
+   (rectangle 29 29 "solid" clr)
+   cubie))
+
+(define bs1 (makesticker "DodgerBlue"))
+(define bs2 (makesticker "DodgerBlue"))
+(define bs3 (makesticker "DodgerBlue"))
+(define bs4 (makesticker "DodgerBlue"))
+(define bs5 (makesticker "DodgerBlue"))
+(define bs6 (makesticker "DodgerBlue"))
+(define bs7 (makesticker "DodgerBlue"))
+(define bs8 (makesticker "DodgerBlue"))
+(define bs9 (makesticker "DodgerBlue"))
+
+(define ws1 (makesticker "white"))
+(define ws2 (makesticker "white"))
+(define ws3 (makesticker "white"))
+(define ws4 (makesticker "white"))
+(define ws5 (makesticker "white"))
+(define ws6 (makesticker "white"))
+(define ws7 (makesticker "white"))
+(define ws8 (makesticker "white"))
+(define ws9 (makesticker "white"))
+
+(define rs1 (makesticker "red"))
+(define rs2 (makesticker "red"))
+(define rs3 (makesticker "red"))
+(define rs4 (makesticker "red"))
+(define rs5 (makesticker "red"))
+(define rs6 (makesticker "red"))
+(define rs7 (makesticker "red"))
+(define rs8 (makesticker "red"))
+(define rs9 (makesticker "red"))
+
+(define os1 (makesticker "orange"))
+(define os2 (makesticker "orange"))
+(define os3 (makesticker "orange"))
+(define os4 (makesticker "orange"))
+(define os5 (makesticker "orange"))
+(define os6 (makesticker "orange"))
+(define os7 (makesticker "orange"))
+(define os8 (makesticker "orange"))
+(define os9 (makesticker "orange"))
+
+(define ys1 (makesticker "yellow"))
+(define ys2 (makesticker "yellow"))
+(define ys3 (makesticker "yellow"))
+(define ys4 (makesticker "yellow"))
+(define ys5 (makesticker "yellow"))
+(define ys6 (makesticker "yellow"))
+(define ys7 (makesticker "yellow"))
+(define ys8 (makesticker "yellow"))
+(define ys9 (makesticker "yellow"))
+
+(define gs1 (makesticker "green"))
+(define gs2 (makesticker "green"))
+(define gs3 (makesticker "green"))
+(define gs4 (makesticker "green"))
+(define gs5 (makesticker "green"))
+(define gs6 (makesticker "green"))
+(define gs7 (makesticker "green"))
+(define gs8 (makesticker "green"))
+(define gs9 (makesticker "green"))
+
+(define-struct blueface1 (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+(define-struct redface1 (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+(define-struct greenface1 (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+(define-struct whiteface1 (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+(define-struct yellowface1 (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+(define-struct orangeface1 (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+
+(define-struct face (s1 s2 s3 s4 s5 s6 s7 s8 s9))
+
+(define-struct cube (f1 f2 f3 f4 f5 f6))
+  
+(define starting-cube (make-cube (make-face os1 os2 os3 os4 os5 os6 os7 os8 os9) (make-face ws1 ws2 ws3 ws4 ws5 ws6 ws7 ws8 ws9) (make-face gs1 gs2 gs3 gs4 gs5 gs6 gs7 gs8 gs9)
+                              (make-face ys1 ys2 ys3 ys4 ys5 ys6 ys7 ys8 ys9) (make-face rs1 rs2 rs3 rs4 rs5 rs6 rs7 rs8 rs9) (make-face bs1 bs2 bs3 bs4 bs5 bs6 bs7 bs8 bs9)))
+  
+;; Cube structure code complete
+;; Window/world/interface
+
+;; Constants
+
+(define winw 360)
+(define winh 270)
+
+(define MTS (overlay (rectangle winw winh "solid" "black") (empty-scene winw winh)))
+
+;; --------------------
+;; Functions
+
+(define (render-cube cubestate)
+    (place-image
+
+     (beside
+      
+       (above (beside (face-s1 (cube-f1 cubestate)) (face-s2 (cube-f1 cubestate)) (face-s3 (cube-f1 cubestate)))
+              (beside (face-s4 (cube-f1 cubestate)) (face-s5 (cube-f1 cubestate)) (face-s6 (cube-f1 cubestate)))
+              (beside (face-s7 (cube-f1 cubestate)) (face-s8 (cube-f1 cubestate)) (face-s9 (cube-f1 cubestate))))
+      
+      (above
+       
+       ;Second face
+       (above (beside (face-s1 (cube-f2 cubestate)) (face-s2 (cube-f2 cubestate)) (face-s3 (cube-f2 cubestate)))
+              (beside (face-s4 (cube-f2 cubestate)) (face-s5 (cube-f2 cubestate)) (face-s6 (cube-f2 cubestate)))
+              (beside (face-s7 (cube-f2 cubestate)) (face-s8 (cube-f2 cubestate)) (face-s9 (cube-f2 cubestate))))
+
+       ;Third face       
+       (above (beside (face-s1 (cube-f3 cubestate)) (face-s2 (cube-f3 cubestate)) (face-s3 (cube-f3 cubestate)))
+              (beside (face-s4 (cube-f3 cubestate)) (face-s5 (cube-f3 cubestate)) (face-s6 (cube-f3 cubestate)))
+              (beside (face-s7 (cube-f3 cubestate)) (face-s8 (cube-f3 cubestate)) (face-s9 (cube-f3 cubestate))))
+
+       ;Fourth face       
+       (above (beside (face-s1 (cube-f4 cubestate)) (face-s2 (cube-f4 cubestate)) (face-s3 (cube-f4 cubestate)))
+              (beside (face-s4 (cube-f4 cubestate)) (face-s5 (cube-f4 cubestate)) (face-s6 (cube-f4 cubestate)))
+              (beside (face-s7 (cube-f4 cubestate)) (face-s8 (cube-f4 cubestate)) (face-s9 (cube-f4 cubestate)))))
+
+       (above (beside (face-s1 (cube-f5 cubestate)) (face-s2 (cube-f5 cubestate)) (face-s3 (cube-f5 cubestate)))
+              (beside (face-s4 (cube-f5 cubestate)) (face-s5 (cube-f5 cubestate)) (face-s6 (cube-f5 cubestate)))
+              (beside (face-s7 (cube-f5 cubestate)) (face-s8 (cube-f5 cubestate)) (face-s9 (cube-f5 cubestate))))
+       
+       (above (beside (face-s1 (cube-f6 cubestate)) (face-s2 (cube-f6 cubestate)) (face-s3 (cube-f6 cubestate)))
+              (beside (face-s4 (cube-f6 cubestate)) (face-s5 (cube-f6 cubestate)) (face-s6 (cube-f6 cubestate)))
+              (beside (face-s7 (cube-f6 cubestate)) (face-s8 (cube-f6 cubestate)) (face-s9 (cube-f6 cubestate)))))
+
+     180 135 MTS))
+  
+(define (movecube a)
+  (+ a 3))
+
+(define (doaR cubestate)
+  (make-cube
+   
+   (cube-f1 cubestate)
+   
+   (make-face (face-s1 (cube-f2 cubestate)) (face-s2 (cube-f2 cubestate)) (face-s3 (cube-f3 cubestate))
+              (face-s4 (cube-f2 cubestate)) (face-s5 (cube-f2 cubestate)) (face-s6 (cube-f3 cubestate))
+              (face-s7 (cube-f2 cubestate)) (face-s8 (cube-f2 cubestate)) (face-s9 (cube-f3 cubestate)))
+   
+   (make-face (face-s1 (cube-f3 cubestate)) (face-s2 (cube-f3 cubestate)) (face-s3 (cube-f4 cubestate))
+              (face-s4 (cube-f3 cubestate)) (face-s5 (cube-f3 cubestate)) (face-s6 (cube-f4 cubestate))
+              (face-s7 (cube-f3 cubestate)) (face-s8 (cube-f3 cubestate)) (face-s9 (cube-f4 cubestate)))
+   
+   (make-face (face-s1 (cube-f4 cubestate)) (face-s2 (cube-f4 cubestate)) (face-s3 (cube-f6 cubestate))
+              (face-s4 (cube-f4 cubestate)) (face-s5 (cube-f4 cubestate)) (face-s6 (cube-f6 cubestate))
+              (face-s7 (cube-f4 cubestate)) (face-s8 (cube-f4 cubestate)) (face-s9 (cube-f6 cubestate)))
+   
+   (cube-f5 cubestate)
+   
+   (make-face (face-s1 (cube-f6 cubestate)) (face-s2 (cube-f6 cubestate)) (face-s3 (cube-f2 cubestate))
+              (face-s4 (cube-f6 cubestate)) (face-s5 (cube-f6 cubestate)) (face-s6 (cube-f2 cubestate))
+              (face-s7 (cube-f6 cubestate)) (face-s8 (cube-f6 cubestate)) (face-s9 (cube-f2 cubestate)))))
+
+;(define (doaRp cubestate)
+  ;(doaR cubestate)
+  ;(doaR cubestate)
+  ;(doaR cubestate))
+
+(define (handlekey cubestate key1)
+  (cond [(key=? key1 "r") (doaR cubestate)]
+        [(key=? key1 " ") (doaRp cubestate)]
+        [else (+ 1 2)]))
+
+;; --------------------------
+
+  
+(define (cubesimulator cubestate)
+(big-bang cubestate
+          ;(on-tick movecube)
+          (to-draw render-cube)
+          (on-key handlekey)))
+
+(cubesimulator starting-cube)
+          
