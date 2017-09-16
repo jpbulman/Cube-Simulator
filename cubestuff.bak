@@ -96,7 +96,6 @@
 
 (define MTS (overlay (rectangle winw winh "solid" "black") (empty-scene winw winh)))
 
-
 ;; --------------------
 ;; Functions
 
@@ -104,8 +103,7 @@
     (place-image
 
      (beside
-
-      ;First face
+      
        (above (beside (face-s1 (cube-f1 cubestate)) (face-s2 (cube-f1 cubestate)) (face-s3 (cube-f1 cubestate)))
               (beside (face-s4 (cube-f1 cubestate)) (face-s5 (cube-f1 cubestate)) (face-s6 (cube-f1 cubestate)))
               (beside (face-s7 (cube-f1 cubestate)) (face-s8 (cube-f1 cubestate)) (face-s9 (cube-f1 cubestate))))
@@ -127,23 +125,22 @@
               (beside (face-s4 (cube-f4 cubestate)) (face-s5 (cube-f4 cubestate)) (face-s6 (cube-f4 cubestate)))
               (beside (face-s7 (cube-f4 cubestate)) (face-s8 (cube-f4 cubestate)) (face-s9 (cube-f4 cubestate)))))
 
-      ;Fifth face
        (above (beside (face-s1 (cube-f5 cubestate)) (face-s2 (cube-f5 cubestate)) (face-s3 (cube-f5 cubestate)))
               (beside (face-s4 (cube-f5 cubestate)) (face-s5 (cube-f5 cubestate)) (face-s6 (cube-f5 cubestate)))
               (beside (face-s7 (cube-f5 cubestate)) (face-s8 (cube-f5 cubestate)) (face-s9 (cube-f5 cubestate))))
-
-       ;Sixth face
+       
        (above (beside (face-s1 (cube-f6 cubestate)) (face-s2 (cube-f6 cubestate)) (face-s3 (cube-f6 cubestate)))
               (beside (face-s4 (cube-f6 cubestate)) (face-s5 (cube-f6 cubestate)) (face-s6 (cube-f6 cubestate)))
               (beside (face-s7 (cube-f6 cubestate)) (face-s8 (cube-f6 cubestate)) (face-s9 (cube-f6 cubestate)))))
 
      180 135 MTS))
-
-;-------Move functions-----------
+  
+(define (movecube a)
+  (+ a 3))
 
 (define (doaR cubestate)
   (make-cube
-
+   
    (cube-f1 cubestate)
    
    (make-face (face-s1 (cube-f2 cubestate)) (face-s2 (cube-f2 cubestate)) (face-s3 (cube-f3 cubestate))
@@ -154,55 +151,24 @@
               (face-s4 (cube-f3 cubestate)) (face-s5 (cube-f3 cubestate)) (face-s6 (cube-f4 cubestate))
               (face-s7 (cube-f3 cubestate)) (face-s8 (cube-f3 cubestate)) (face-s9 (cube-f4 cubestate)))
    
-   (make-face (face-s1 (cube-f4 cubestate)) (face-s2 (cube-f4 cubestate)) (face-s7 (cube-f6 cubestate))
-              (face-s4 (cube-f4 cubestate)) (face-s5 (cube-f4 cubestate)) (face-s4 (cube-f6 cubestate))
-              (face-s7 (cube-f4 cubestate)) (face-s8 (cube-f4 cubestate)) (face-s1 (cube-f6 cubestate)))
+   (make-face (face-s1 (cube-f4 cubestate)) (face-s2 (cube-f4 cubestate)) (face-s3 (cube-f6 cubestate))
+              (face-s4 (cube-f4 cubestate)) (face-s5 (cube-f4 cubestate)) (face-s6 (cube-f6 cubestate))
+              (face-s7 (cube-f4 cubestate)) (face-s8 (cube-f4 cubestate)) (face-s9 (cube-f6 cubestate)))
    
-   (make-face (face-s7 (cube-f5 cubestate)) (face-s4 (cube-f5 cubestate)) (face-s1 (cube-f5 cubestate))
-              (face-s8 (cube-f5 cubestate)) (face-s5 (cube-f5 cubestate)) (face-s2 (cube-f5 cubestate))
-              (face-s9 (cube-f5 cubestate)) (face-s6 (cube-f5 cubestate)) (face-s3 (cube-f5 cubestate)))
+   (cube-f5 cubestate)
    
-   (make-face (face-s9 (cube-f2 cubestate)) (face-s2 (cube-f6 cubestate)) (face-s3 (cube-f6 cubestate))
-              (face-s6 (cube-f2 cubestate)) (face-s5 (cube-f6 cubestate)) (face-s6 (cube-f6 cubestate))
-              (face-s3 (cube-f2 cubestate)) (face-s8 (cube-f6 cubestate)) (face-s9 (cube-f6 cubestate)))))
+   (make-face (face-s1 (cube-f6 cubestate)) (face-s2 (cube-f6 cubestate)) (face-s3 (cube-f2 cubestate))
+              (face-s4 (cube-f6 cubestate)) (face-s5 (cube-f6 cubestate)) (face-s6 (cube-f2 cubestate))
+              (face-s7 (cube-f6 cubestate)) (face-s8 (cube-f6 cubestate)) (face-s9 (cube-f2 cubestate)))))
 
-(define (doaU cubestate)
-  (make-cube
-
-   (make-face (face-s1 (cube-f3 cubestate)) (face-s2 (cube-f3 cubestate)) (face-s3 (cube-f3 cubestate))
-              (face-s4 (cube-f1 cubestate)) (face-s5 (cube-f1 cubestate)) (face-s6 (cube-f1 cubestate))
-              (face-s7 (cube-f1 cubestate)) (face-s8 (cube-f1 cubestate)) (face-s9 (cube-f1 cubestate)))
-   
-   (make-face (face-s7 (cube-f2 cubestate)) (face-s4 (cube-f2 cubestate)) (face-s1 (cube-f2 cubestate))
-              (face-s8 (cube-f2 cubestate)) (face-s5 (cube-f2 cubestate)) (face-s2 (cube-f2 cubestate))
-              (face-s9 (cube-f2 cubestate)) (face-s6 (cube-f2 cubestate)) (face-s3 (cube-f2 cubestate)))
-   
-   (make-face (face-s1 (cube-f5 cubestate)) (face-s2 (cube-f5 cubestate)) (face-s3 (cube-f5 cubestate))
-              (face-s4 (cube-f3 cubestate)) (face-s5 (cube-f3 cubestate)) (face-s6 (cube-f3 cubestate))
-              (face-s7 (cube-f3 cubestate)) (face-s8 (cube-f3 cubestate)) (face-s9 (cube-f3 cubestate)))
-   
-   (cube-f4 cubestate)
-   
-   (make-face (face-s1 (cube-f6 cubestate)) (face-s2 (cube-f6 cubestate)) (face-s3 (cube-f6 cubestate))
-              (face-s4 (cube-f5 cubestate)) (face-s5 (cube-f5 cubestate)) (face-s6 (cube-f5 cubestate))
-              (face-s7 (cube-f5 cubestate)) (face-s8 (cube-f5 cubestate)) (face-s9 (cube-f5 cubestate)))
-   
-   (make-face (face-s1 (cube-f1 cubestate)) (face-s2 (cube-f1 cubestate)) (face-s3 (cube-f1 cubestate))
-              (face-s4 (cube-f6 cubestate)) (face-s5 (cube-f6 cubestate)) (face-s6 (cube-f6 cubestate))
-              (face-s7 (cube-f6 cubestate)) (face-s8 (cube-f6 cubestate)) (face-s9 (cube-f6 cubestate)))))
-
-(define (doaRp cubestate)
-  (doaR (doaR (doaR cubestate))))
-
-(define (doaUp cubestate)
-  (doaU (doaU (doaU cubestate))))
-
+;(define (doaRp cubestate)
+  ;(doaR cubestate)
+  ;(doaR cubestate)
+  ;(doaR cubestate))
 
 (define (handlekey cubestate key1)
   (cond [(key=? key1 "r") (doaR cubestate)]
-        [(key=? key1 "u") (doaU cubestate)]
-        [(key=? key1 "e") (doaRp cubestate)]
-        [(key=? key1 "y") (doaUp cubestate)]
+        [(key=? key1 " ") (doaRp cubestate)]
         [else (+ 1 2)]))
 
 ;; --------------------------
