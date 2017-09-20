@@ -1,0 +1,18 @@
+Instrcutions for Cubesimulator:
+----------------------------------------------------
+Before continuing if you do not know about Rubik's Cube notation, here is a brief summary:
+https://ruwix.com/the-rubiks-cube/notation/
+
+(assuming a QWERTY style-keyboard)
+
+For the program, all non-prime moves are initiated by hitting the key with the letter of their notation move
+	Example: hitting the 'r' key will do an R on the cube
+
+All prime moves (R', B', etc.) are initiated by hitting the key to the LEFT of its primary move key
+	WITH THE EXCEPTION OF F': This would normally be D, but because that is already a primary move, F' is executed with the 'C' key
+	(the bottom left of the F key)
+					Examples: L' is K, U' is Y
+
+Created by: JP Bulman
+WPI 2021
+jpbulman@wpi.edu
